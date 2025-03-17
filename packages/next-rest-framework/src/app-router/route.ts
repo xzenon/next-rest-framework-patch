@@ -253,7 +253,7 @@ export const route = <T extends Record<string, RouteOperationDefinition>>(
         if (paramsSchema) {
           const { valid, errors, data } = validateSchema({
             schema: paramsSchema,
-            obj: context.params
+            obj: await context.params
           });
 
           if (!valid) {
@@ -268,7 +268,7 @@ export const route = <T extends Record<string, RouteOperationDefinition>>(
             );
           }
 
-          context.params = data;
+          context.params = Promise.resolve(data);
         }
       }
 
