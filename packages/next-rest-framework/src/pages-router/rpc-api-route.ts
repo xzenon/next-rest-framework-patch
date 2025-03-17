@@ -173,7 +173,7 @@ export const rpcApiRoute = <
 
         res.setHeader(
           'Content-Disposition',
-          `attachment; filename="${_res.name}"`
+          `attachment; filename="${('name' in _res && _res.name) || 'download'}"`
         );
 
         const pump = async () => {
